@@ -23,6 +23,9 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include "RainDrops.h"
+#include "FramTimer.h"
+#include <random>
 
 class Game
 {
@@ -42,5 +45,11 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	std::random_device rd;
+	std::uniform_real_distribution<float> x_dist, y_dist;
+	std::mt19937 rng;
+	constexpr static int Maxraindrops = 600;
+	Raindrops raindrop[Maxraindrops];
+	FrameTimer ft;
 	/********************************/
 };

@@ -51,6 +51,9 @@
     <ClInclude Include="RainDrops.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FramTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXErr.cpp">
@@ -75,6 +78,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RainDrops.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FramTimer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,12 +5,15 @@ class Raindrops
 {
 public:
 	Raindrops() = default;
-	Raindrops( float x, float y, float width, float height );
+	Raindrops( float x, float y, float width);
 	void Draw(Graphics& gfx) const;
+	void Update(const float dt);
+
 private:
 	float y;
 	float x;
 	float width;
 	float height;
-	constexpr static Color c = Colors::Red;
+	float speed;
+	constexpr static Color c = {0,0,0};
 };

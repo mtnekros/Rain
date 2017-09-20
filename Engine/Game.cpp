@@ -24,8 +24,16 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	x_dist( 0.0f, float( Graphics::ScreenWidth ) ),
+	y_dist( -700.0f, 0.0f ),
+	rng( rd() )
 {
+	std::uniform_real_distribution<float> width_dist(1.5f, 5.0f);
+	for (int i = 0; i < Maxraindrops; i++)
+	{
+		raindrop[i] = Raindrops( x_dist( rng ), y_dist( rng ), width_dist( rng ) );
+	}
 }
 
 void Game::Go()
@@ -38,8 +46,20 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	float dt = ft.Mark();
+	for ( Raindrops& rd : raindrop )
+	rd.Update(dt);
 }
 
 void Game::ComposeFrame()
 {
+	for (int x = 0; x < Graphics::ScreenWidth; x++)
+	{
+		for (int y = 0; y < Graphics::ScreenHeight; y++)
+		{
+			gfx.PutPixel(x, y, 75, 75, 75);
+		}
+	}
+	for ( const Raindrops& rd : raindrop )
+	rd.Draw(gfx);
 }
